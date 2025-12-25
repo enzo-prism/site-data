@@ -1,18 +1,22 @@
 # Contributing
 
-Thanks for helping keep site data accurate and well documented.
+Thanks for helping improve SitePulse.
 
-## Add or update data
-- Add new files under `data/`.
-- Use descriptive, kebab-case file names.
-- Keep files focused on a single dataset or concept.
-- If you are replacing data, keep the file name stable when possible.
+## Development
+- Use `pnpm` for installs and scripts.
+- Keep UI components in shadcn/ui.
+- Keep Similarweb credentials server-only (never expose in client code).
 
-## Document sources
-- Add a short note in `docs/` describing the source, retrieval date, and any transforms.
-- If data is derived, include the inputs and the steps used to produce it.
+## UI guidelines
+- Use shadcn/ui components for inputs, cards, tables, badges, toasts, and charts.
+- Prefer the chart helpers from `src/components/ui/chart.tsx`.
+- Keep layouts clean, spacious, and minimal.
 
-## Review checklist
-- Data files validate for their format (JSON, YAML, CSV, etc.).
-- Documentation for the change is present in `docs/`.
-- No secrets or personal data are included.
+## Data and API
+- Validate inputs with zod.
+- Handle partial Similarweb responses gracefully.
+- Avoid logging API keys or raw Similarweb responses.
+
+## Before opening a PR
+- `pnpm lint`
+- `pnpm typecheck`

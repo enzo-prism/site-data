@@ -1,27 +1,51 @@
-# site-data
+# SitePulse
 
-Data files and metadata used by the site.
+SitePulse is a Next.js dashboard for instant Similarweb-powered marketing and traffic insights. Enter a website URL, choose a time range, and see visits, engagement, and channel mix in a clean shadcn/ui interface.
 
-## What lives here
-- Data files consumed by the site build or runtime
-- Source notes or provenance for the data
-- Documentation for data formats and update workflows
+## Features
+- Server-side Similarweb API integration (API key stays private)
+- Monthly (last 3 full months) and last 28 days modes
+- KPI summary cards, charts, and channel breakdowns
+- Friendly partial/no coverage states
+- Shareable links and copy-to-clipboard
+- Rate limiting and zod validation
 
-## Getting started
-1. Clone the repo.
-2. Add or update data under `data/`.
-3. Document sources and changes under `docs/`.
+## Tech stack
+- Next.js App Router + TypeScript
+- Tailwind CSS + shadcn/ui
+- Recharts via shadcn Chart components
 
-## Repository layout
-- `data/` - structured data files (create as needed)
-- `docs/` - documentation for data and workflows
-- `scripts/` - optional helper scripts (if added later)
+## Setup
+1. Install dependencies:
+   ```bash
+   pnpm install
+   ```
+2. Create your env file:
+   ```bash
+   cp .env.example .env.local
+   ```
+3. Add your Similarweb API key to `.env.local`.
+4. Run the dev server:
+   ```bash
+   pnpm dev
+   ```
 
-## Data conventions
-- Use small, focused files.
-- Prefer stable file names and avoid renames.
-- Keep data in UTF-8; avoid non-ASCII unless needed.
-- Include a short source note in docs when data is derived.
+Open http://localhost:3000 in your browser.
 
-## Contributing
-See `docs/CONTRIBUTING.md`.
+## Similarweb API key
+- Get a key from the Similarweb API portal (account required).
+- Use `SIMILARWEB_API_KEY_IN_HEADER=true` only if your plan requires header-based auth.
+
+## Vercel deployment
+- Add the following environment variables in Vercel:
+  - `SIMILARWEB_API_KEY`
+  - `SIMILARWEB_API_KEY_IN_HEADER` (optional, default `false`)
+- Build command: `pnpm build`
+- Output: Next.js default
+
+## Scripts
+- `pnpm dev` - start local dev server
+- `pnpm build` - build for production
+- `pnpm start` - start production server
+- `pnpm lint` - run ESLint
+- `pnpm typecheck` - run TypeScript checks
